@@ -6,11 +6,10 @@ import { environment as env } from 'src/environments/environment';
 import { APIResponse, Game } from '../models';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class HttpService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getGameList(
     ordering: string,
@@ -38,14 +37,14 @@ export class HttpService {
 
     return forkJoin({
       gameInfoRequest,
-      gameScreenshotsRequest,
-      gameTrailersRequest,
+      // gameScreenshotsRequest,
+      // gameTrailersRequest,
     }).pipe(
       map((resp: any) => {
         return {
           ...resp['gameInfoRequest'],
-          screenshots: resp['gameScreenshotsRequest']?.results,
-          trailers: resp['gameTrailersRequest']?.results,
+          // screenshots: resp['gameScreenshotsRequest']?.results,
+          // trailers: resp['gameTrailersRequest']?.results,
         };
       })
     );
